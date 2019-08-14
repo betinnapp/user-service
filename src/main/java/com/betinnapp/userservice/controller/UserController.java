@@ -7,13 +7,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "user")
 public class UserController {
 
-    @GetMapping(path = "/{id}")
-    public User getUserById(@PathVariable int id) {
-        return new User();
-    }
-
-    @GetMapping
-    public User getUserByName(@RequestParam String name) {
+    @GetMapping(path = "/me")
+    public User getUserById() {
         return new User();
     }
 

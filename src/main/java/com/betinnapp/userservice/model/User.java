@@ -1,26 +1,15 @@
 package com.betinnapp.userservice.model;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.stereotype.Repository;
+import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.UUID;
+import java.math.BigDecimal;
+import java.util.*;
 
 @Entity
 @Table(name = "user")
 public class User {
-
-
-    public User(String name, String nickname, String email, Date birthDate) {
-        this.name = name;
-        this.nickname = nickname;
-        this.email = email;
-        this.birthDate = birthDate;
-    }
-
-    public User() {
-    }
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -32,10 +21,10 @@ public class User {
     private UUID id;
 
     @Column
-    private String name;
+    private String firstName;
 
     @Column
-    private String nickname;
+    private String lastName;
 
     @Column
     private String email;
@@ -43,28 +32,30 @@ public class User {
     @Column
     private Date birthDate;
 
+    @Column
+    private BigDecimal initailScore;
+
+    @Transient
+    private Map<String, String> preferences = new HashMap<>();
+
     public UUID getId() {
         return id;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getName() {
-        return name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -81,5 +72,21 @@ public class User {
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public BigDecimal getInitailScore() {
+        return initailScore;
+    }
+
+    public void setInitailScore(BigDecimal initailScore) {
+        this.initailScore = initailScore;
+    }
+
+    public Map<String, String> getPreferences() {
+        return preferences;
+    }
+
+    public void setPreferences(Map<String, String> preferences) {
+        this.preferences = preferences;
     }
 }
