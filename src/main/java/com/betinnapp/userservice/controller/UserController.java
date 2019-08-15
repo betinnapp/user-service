@@ -12,4 +12,10 @@ public class UserController {
         return new User();
     }
 
+    @PostMapping(path = "/")
+    public String createUser(){
+
+        return "Ok";
+    }
+
 }

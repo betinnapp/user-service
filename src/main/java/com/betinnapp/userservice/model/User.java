@@ -35,8 +35,8 @@ public class User {
     @Column
     private BigDecimal initailScore;
 
-    @Transient
-    private Map<String, String> preferences = new HashMap<>();
+    @Column
+    private String preferences;
 
     public UUID getId() {
         return id;
@@ -82,11 +82,11 @@ public class User {
         this.initailScore = initailScore;
     }
 
-    public Map<String, String> getPreferences() {
+    public String getPreferences() {
         return preferences;
     }
 
-    public void setPreferences(Map<String, String> preferences) {
+    public void setPreferences(String preferences) {
         this.preferences = preferences;
     }
 }
