@@ -1,4 +1,6 @@
-.idea/
+!.idea
+.idea/*
+!.idea/runConfigurations
 projectName.iml
 /*.classpath
 /.classpath
