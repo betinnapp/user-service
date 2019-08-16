@@ -4,6 +4,9 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -20,18 +23,23 @@ public class User {
     @Column(nullable = false)
     private UUID id;
 
+    @NotEmpty(message = "MISSING_LAST_NAME")
     @Column
     private String firstName;
 
+    @NotEmpty(message = "MISSING_LAST_NAME")
     @Column
     private String lastName;
 
+    @NotEmpty(message = "MISSING_EMAIL")
     @Column
     private String email;
 
+    @NotNull(message = "MISSING_BIRTH_DATE")
     @Column
     private Date birthDate;
 
+    @NotNull(message = "MISSING_INITIAL_SCORE")
     @Column
     private BigDecimal initailScore;
 
