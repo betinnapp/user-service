@@ -35,16 +35,23 @@ public class User {
     @Column
     private String email;
 
+    @NotEmpty(message = "MISSING_PASSWORD")
+    @Column
+    private String password;
+
     @NotNull(message = "MISSING_BIRTH_DATE")
     @Column
     private Date birthDate;
 
     @NotNull(message = "MISSING_INITIAL_SCORE")
     @Column
-    private BigDecimal initailScore;
+    private BigDecimal initialScore;
 
     @Column
     private String preferences;
+
+    @Column
+    private UUID token;
 
     public UUID getId() {
         return id;
@@ -83,11 +90,11 @@ public class User {
     }
 
     public BigDecimal getInitailScore() {
-        return initailScore;
+        return initialScore;
     }
 
     public void setInitailScore(BigDecimal initailScore) {
-        this.initailScore = initailScore;
+        this.initialScore = initailScore;
     }
 
     public String getPreferences() {
@@ -96,5 +103,21 @@ public class User {
 
     public void setPreferences(String preferences) {
         this.preferences = preferences;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public UUID getToken() {
+        return token;
+    }
+
+    public void setToken(UUID token) {
+        this.token = token;
     }
 }
