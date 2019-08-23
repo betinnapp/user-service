@@ -24,7 +24,7 @@ public class UserController {
     @PostMapping(path = "/")
     @ResponseStatus(HttpStatus.CREATED)
     public User createUser(@Valid @RequestBody User user) {
-        return userService.save(user);
+        return userService.create(user);
     }
 
     @DeleteMapping(path = "/{uuid}")

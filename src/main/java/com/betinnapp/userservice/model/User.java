@@ -1,10 +1,9 @@
 package com.betinnapp.userservice.model;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.ManyToAny;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -32,7 +31,7 @@ public class User {
     private String lastName;
 
     @NotEmpty(message = "MISSING_EMAIL")
-    @Column
+    @Column(unique = true)
     private String email;
 
     @NotEmpty(message = "MISSING_PASSWORD")
