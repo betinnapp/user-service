@@ -1,6 +1,7 @@
 package com.betinnapp.userservice.controller;
 
 import com.betinnapp.userservice.model.User;
+import com.betinnapp.userservice.model.UserDTO;
 import com.betinnapp.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,13 +18,13 @@ public class UserController {
     UserService userService;
 
     @GetMapping(path = "/me")
-    public User getUserById() {
-        return new User();
+    public UserDTO getUserById() {
+        return new UserDTO();
     }
 
     @PostMapping(path = "/")
     @ResponseStatus(HttpStatus.CREATED)
-    public User createUser(@Valid @RequestBody User user) {
+    public UserDTO createUser(@Valid @RequestBody User user) {
         return userService.create(user);
     }
 
@@ -35,7 +36,7 @@ public class UserController {
 
     @PutMapping(path = "/")
     @ResponseStatus(HttpStatus.CREATED)
-    public User updateUser(@Valid @RequestBody User user) {
+    public UserDTO updateUser(@Valid @RequestBody User user) {
         return userService.save(user);
     }
 }
