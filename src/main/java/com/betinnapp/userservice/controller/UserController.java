@@ -1,7 +1,7 @@
 package com.betinnapp.userservice.controller;
 
 import com.betinnapp.userservice.model.User;
-import com.betinnapp.userservice.model.UserDTO;
+import com.betinnapp.userservice.model.dto.UserDTO;
 import com.betinnapp.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.UUID;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "user")
 public class UserController {

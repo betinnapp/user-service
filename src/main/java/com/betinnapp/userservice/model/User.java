@@ -1,7 +1,6 @@
 package com.betinnapp.userservice.model;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -30,6 +29,10 @@ public class User {
     @Column
     private String lastName;
 
+    @NotEmpty(message = "MISSING_SORT_NAME")
+    @Column
+    private String shortName;
+
     @NotEmpty(message = "MISSING_EMAIL")
     @Column(unique = true)
     private String email;
@@ -45,6 +48,10 @@ public class User {
     @NotNull(message = "MISSING_INITIAL_SCORE")
     @Column
     private BigDecimal initialScore;
+
+    @NotNull(message = "MISSING_WORK")
+    @Column
+    private Boolean work;
 
     @Column
     private String preferences;
@@ -88,11 +95,11 @@ public class User {
         this.birthDate = birthDate;
     }
 
-    public BigDecimal getInitailScore() {
+    public BigDecimal getInitialScore() {
         return initialScore;
     }
 
-    public void setInitailScore(BigDecimal initailScore) {
+    public void setInitialScore(BigDecimal initailScore) {
         this.initialScore = initailScore;
     }
 
@@ -118,5 +125,21 @@ public class User {
 
     public void setToken(UUID token) {
         this.token = token;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
+    public Boolean getWork() {
+        return work;
+    }
+
+    public void setWork(Boolean work) {
+        this.work = work;
     }
 }

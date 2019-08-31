@@ -1,7 +1,7 @@
 package com.betinnapp.userservice.service;
 
 import com.betinnapp.userservice.model.User;
-import com.betinnapp.userservice.model.UserDTO;
+import com.betinnapp.userservice.model.dto.UserDTO;
 import com.betinnapp.userservice.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
