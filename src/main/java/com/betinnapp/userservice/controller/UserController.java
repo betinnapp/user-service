@@ -18,9 +18,11 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @CrossOrigin
     @GetMapping(path = "/me")
-    public UserDTO getUserById() {
-        return new UserDTO();
+    public UserDTO getUserById(@RequestHeader(name = "authorization") String authorization) {
+        UUID authToken =  UUID.fromString(authorization);
+        return userService.findUserByToken(authToken);
     }
 
     @PostMapping(path = "/")

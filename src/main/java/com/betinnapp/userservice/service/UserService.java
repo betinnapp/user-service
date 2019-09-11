@@ -44,4 +44,10 @@ public class UserService {
     public void delete(UUID id) {
         userRepository.deleteById(id);
     }
+
+    public UserDTO findUserByToken(UUID token){
+        User user = userRepository.findByToken(token);
+        UserDTO userDTO = mapper.convertValue(user, UserDTO.class);
+        return userDTO;
+    }
 }
