@@ -1,6 +1,8 @@
 package com.betinnapp.userservice.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.*;
 
@@ -13,6 +15,7 @@ public class UserDTO {
     private String lastName;
     private String shortName;
     private String email;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date birthDate;
     private Boolean work;
     private String preferences;

@@ -25,6 +25,12 @@ public class UserController {
         return userService.findUserByToken(authToken);
     }
 
+    @PutMapping(path = "/me")
+    public UserDTO putUserById(@RequestHeader(name = "authorization" ) String authorization, @RequestBody User user) {
+        UUID authToken =  UUID.fromString(authorization);
+        return userService.updateUser(authToken, user);
+    }
+
     @PostMapping(path = "/")
     @ResponseStatus(HttpStatus.CREATED)
     public UserDTO createUser(@Valid @RequestBody User user) {

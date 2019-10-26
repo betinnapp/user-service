@@ -50,4 +50,25 @@ public class UserService {
         UserDTO userDTO = mapper.convertValue(user, UserDTO.class);
         return userDTO;
     }
+
+    @Transactional
+    public UserDTO updateUser(UUID token, User alterations){
+
+        User user = userRepository.findByToken(token);
+        User alteredUser = userRepository.save(mergeAlterations(user,alterations));
+
+        return mapper.convertValue(alteredUser, UserDTO.class);
+    }
+
+    private User mergeAlterations(User user, User alterations){
+        user.setFirstName(alterations.getFirstName());
+        user.setLastName(alterations.getLastName());
+        user.setShortName(alterations.getShortName());
+        user.setEmail(alterations.getEmail());
+        user.setBirthDate(alterations.getBirthDate());
+        user.setWork(alterations.getWork());
+
+        return user;
+    }
+
 }
