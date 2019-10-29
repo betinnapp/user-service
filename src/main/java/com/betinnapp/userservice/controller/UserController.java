@@ -3,7 +3,6 @@ package com.betinnapp.userservice.controller;
 import com.betinnapp.userservice.model.User;
 import com.betinnapp.userservice.model.dto.UserDTO;
 import com.betinnapp.userservice.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,19 +14,22 @@ import java.util.UUID;
 @RequestMapping(path = "user")
 public class UserController {
 
-    @Autowired
-    UserService userService;
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @CrossOrigin
     @GetMapping(path = "/me")
     public UserDTO getUserById(@RequestHeader(name = "authorization") String authorization) {
-        UUID authToken =  UUID.fromString(authorization);
+        UUID authToken = UUID.fromString(authorization);
         return userService.findUserByToken(authToken);
     }
 
     @PutMapping(path = "/me")
-    public UserDTO putUserById(@RequestHeader(name = "authorization" ) String authorization, @RequestBody User user) {
-        UUID authToken =  UUID.fromString(authorization);
+    public UserDTO putUserById(@RequestHeader(name = "authorization") String authorization, @RequestBody User user) {
+        UUID authToken = UUID.fromString(authorization);
         return userService.updateUser(authToken, user);
     }
 
