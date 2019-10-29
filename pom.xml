@@ -11,7 +11,7 @@
 
 	<groupId>com.betinnapp</groupId>
 	<artifactId>user-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 
 	<name>user-service</name>
 	<description>Betinnapp User Service!</description>
@@ -113,7 +113,7 @@
 	<scm>
 		<developerConnection>scm:git:git@github.com:betinnapp/user-service.git</developerConnection>
 		<url>https://github.com/betinnapp/user-service</url>
-		<tag>HEAD</tag>
+		<tag>0.0.1</tag>
 	</scm>
 
 </project>
